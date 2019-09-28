@@ -2,6 +2,9 @@ FROM php:7.3-apache
 
 ARG GRAV_VERSION=latest
 
+RUN usermod -u 1000 www-data
+RUN groupmod -g 1000 www-data
+
 RUN a2enmod rewrite
 
 RUN apt-get update \
