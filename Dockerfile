@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:7-apache
 
 ARG GRAV_VERSION=latest
 
