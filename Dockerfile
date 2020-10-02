@@ -10,8 +10,8 @@ RUN a2enmod rewrite
 RUN apt-get update \
   && apt-get install -y rsync git unzip libyaml-dev libpng-dev libjpeg-dev libzip-dev \
   && pecl install apcu yaml \
-  && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-  && docker-php-ext-configure zip --with-libzip \
+  && docker-php-ext-configure gd --with-jpeg \
+  && docker-php-ext-configure zip \
   && docker-php-ext-enable apcu yaml \
   && docker-php-ext-install gd opcache zip
 
