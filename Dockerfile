@@ -28,11 +28,14 @@ RUN curl -o grav.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VER
   && rsync -a /tmp/grav-admin/ /var/www/html --exclude user \
   && chown -R www-data:www-data /var/www/html
 
-RUN echo -e \
-  "memory_limit = 128M\n" \
+RUN echo \
+  "memory_limit = 512M\n" \
+  > /usr/local/etc/php/conf.d/docker-php-memory.ini
+
+RUN echo \
   "upload_max_filesize = 64M\n" \
   "post_max_size = 64M\n" \
-  > /usr/local/etc/php/conf.d/uploads.ini
+  > /usr/local/etc/php/conf.d/docker-php-upload.ini
 
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
